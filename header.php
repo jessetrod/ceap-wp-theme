@@ -98,3 +98,44 @@
   </script>
 
   <?php wp_head(); ?>
+</head>
+
+<body>
+  <header>
+    <div class="container mx-auto">
+      <div class="logo">
+        <img src="<?= get_template_directory_uri(); ?>/assets/img/logo.svg" alt="">
+      </div>
+      <nav>
+        <ul>
+          <li class="dropdown">
+            <a class="text-sm" href="">Institucional <span></span></a>
+            <div class="box-dropdown">
+            </div>
+          </li>
+          <li class="dropdown ">
+            <a class="text-sm" href="">Cursos <span></span></a>
+            <div class="box-dropdown">
+
+            </div>
+          </li>
+
+          <li class="dropdown">
+            <a class="text-sm" href="">Eventos <span></span></a>
+            <div class="box-dropdown">
+            </div>
+          </li>
+
+          <li class="dropdown">
+            <a class="text-sm" href="">Radar</a>
+          </li>
+
+          <li class="dropdown">
+            <a class="text-sm" href="">Contato</a>
+          </li>
+        </ul>
+      </nav>
+
+    </div>
+
+  </header>

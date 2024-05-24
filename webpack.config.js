@@ -6,20 +6,10 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
-  entry: ["./source/assets/js/main.js", "./source/assets/scss/main.scss"],
+  entry: ["./assets/js/main.dev.js", "./assets/scss/main.scss"],
   output: {
     filename: "assets/js/bundle.min.js",
-    path: path.resolve(__dirname, "./"),
-  },
-  devServer: {
-    static: {
-      directory: path.resolve(__dirname, 'dist'),
-    },
-    port: 3000,
-    open: true,
-    hot: true,
-    compress: true,
-    historyApiFallback: true,
+    path: path.resolve(__dirname),
   },
   module: {
     rules: [
@@ -53,24 +43,13 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin({
-      cleanOnceBeforeBuildPatterns: ["./assets/*"],
+      cleanOnceBeforeBuildPatterns: [
+        "./assets/css/*",
+        "./assets/js/bundle.min.js",
+      ],
     }),
     new MiniCssExtractPlugin({
       filename: "./assets/css/main.min.css",
-    }),
-    new CopyWebpackPlugin({
-      patterns: [
-        { from: "source/assets/img/", to: "assets/img/" },
-        {
-          from: "source/*.php",
-          to({ context, absoluteFilename }) {
-            return `${path.relative(
-              path.join(context, "source"),
-              absoluteFilename
-            )}`;
-          },
-        },
-      ],
     }),
   ],
   optimization: {
